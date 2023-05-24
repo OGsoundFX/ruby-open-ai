@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
   def chat
-    @response = OpenaiService.new('how is it going').call
+    if params[:entry]
+      @response = OpenaiService.new(params[:entry]).call
+    else
+      @response = "Ask a question"
+    end
   end
 end
