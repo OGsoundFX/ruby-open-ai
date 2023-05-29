@@ -1,0 +1,24 @@
+<h1>This is your conversation</h1>
+<p>Ask your question</p>
+<form action="<%= question_path %>", method="post">
+  <input type="hidden" name="conversation" value="<%= @convo.id %>">
+  <textarea rows="5" cols="33" name="entry"></textarea>
+  <input type="submit">
+</form>
+
+<%= @convo.historic if !@convo.historic.nil? %>
+<br>
+<%= @answer %>
+
+<!--
+<ul>
+  <% @convo.questions.each do |question| %>
+    <li>
+      <%= question.content %>
+    </li>
+    <li>
+      <%= question.answers.first.content %>
+    </li>
+  <% end %>
+</ul>
+-->
