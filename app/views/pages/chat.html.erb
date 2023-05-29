@@ -4,3 +4,16 @@
   <input type="submit">
 </form>
 <p><%= @response %></p>
+
+<h1>Let's generate some images</h1>
+<form action="<%= root_path %>">
+  <input type="text" name="image_entry">
+  <input type="submit">
+</form>
+
+<%= @intro %>
+<% if !@image_response.nil? %>
+  <% @image_response.each do |url| %>
+    <img src="<%= url %>" alt="">
+  <% end %>
+<% end %>

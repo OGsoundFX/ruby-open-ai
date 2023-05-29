@@ -21,4 +21,10 @@ class OpenaiService
     # you might want to inspect the response and see what the api is giving you
     return response["choices"][0]["message"]["content"]
   end
+
+  def generate_image
+    response = client.images.generate(parameters: { prompt: prompt, size: "256x256", n: 4 })
+    # return response.dig("data", 0, "url") # single result
+    return response.dig("data").map { |url| url["url"]} # multiple images with the "n: 4" option
+  end
 end
