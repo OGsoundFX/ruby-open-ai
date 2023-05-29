@@ -21,7 +21,6 @@ class ConversationsController < ApplicationController
       conversation.historic += "\nQ: #{@question.content}\nA: #{response}"
     end
     conversation.save
-    # response = OpenaiService.new(params[:entry]).call
     @answer = Answer.create(content: response, question: @question)
     redirect_to conversation_path(conversation)
   end
