@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  def chat
+  def home
     if params[:entry]
       @response = OpenaiService.new(params[:entry]).call
     else
