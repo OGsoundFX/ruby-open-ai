@@ -23,8 +23,8 @@ class OpenaiService
   end
 
   def generate_image
-    response = client.images.generate(parameters: { prompt: prompt, size: "256x256", n: 4 })
+    response = client.images.generate(parameters: { prompt: prompt, size: "256x256", n: 4 }) # multiple images with the "n: 4" option
     # return response.dig("data", 0, "url") # single result
-    return response.dig("data").map { |url| url["url"]} # multiple images with the "n: 4" option
+    return response.dig("data").map { |url| url["url"]} # multiple images
   end
 end
