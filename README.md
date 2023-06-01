@@ -1,8 +1,24 @@
-# IMPLEMENTATION OF ```ruby-openai``` GEM AND USAGE
+# README
 
-Resources:
-- https://doug-berkley.notion.site/doug-berkley/Rails-ChatGPT-Service-Object-Setup-21748fc969514b978bf6345f897b6d3e
-- https://github.com/alexrudall/ruby-openai
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Going Further:
-- https://gist.github.com/alexrudall/cb5ee1e109353ef358adb4e66631799d
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
