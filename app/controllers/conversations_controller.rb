@@ -16,6 +16,7 @@ class ConversationsController < ApplicationController
     if conversation.historic.nil?
       response = OpenaiService.new(params[:entry]).call 
       conversation.historic = "#{@question.content}\n#{response}"
+      conversation.initial_question = params[:entry]
     else
       response = OpenaiService.new("#{conversation.historic}\n#{params[:entry]}").call
       conversation.historic += "\n#{@question.content}\n#{response}"
