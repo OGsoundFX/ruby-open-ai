@@ -95,6 +95,46 @@ By default the ```openai``` gem does not come with that feature, hence having to
 
 <img src="./db-schema.png" width="380">
 
+2. Routes
+```ruby
+Rails.application.routes.draw do
+  root "pages#chat"
+  resources :conversations, only: [:create, :show]
+  post "question", to: "conversations#ask_question"
+end
+```
+
+3. Controller
+```ruby
+class ConversationsController < ApplicationController
+  def create
+    @convo = Conversation.create
+    redirect_to conversation_path(@convo)
+  end
+
+  def show
+    @convo = Conversation.find(params[:id])
+  end
+
+  def ask_question
+    @question = Question.new(content: params[:entry])
+    conversation = Conversation.find(params[:conversation])
+    @question.conversation = conversation
+    @question.save
+    if conversation.historic.nil?
+      response = OpenaiService.new(params[:entry]).call 
+      conversation.historic = "#{@question.content}\n#{response}"
+    else
+      response = OpenaiService.new("#{conversation.historic}\n#{params[:entry]}").call
+      conversation.historic += "\n#{@question.content}\n#{response}"
+    end
+    conversation.save
+    @answer = Answer.create(content: response, question: @question)
+    redirect_to conversation_path(conversation)
+  end
+end
+```
+
 
 ## Implementation of DAL-E
 
