@@ -98,13 +98,12 @@ By default the ```openai``` gem does not come with that feature, hence having to
 2. Routes
 ```ruby
 Rails.application.routes.draw do
-  root "pages#chat"
   resources :conversations, only: [:create, :show]
   post "question", to: "conversations#ask_question"
 end
 ```
 
-3. Controller
+3. Controller ```app/controllers/conversations_controller.rb```
 ```ruby
 class ConversationsController < ApplicationController
   def create
@@ -135,6 +134,33 @@ class ConversationsController < ApplicationController
 end
 ```
 
+4. Show page ```app/views/conversations/show.html.erb```
+
+```ruby
+<h1>This is your conversation</h1>
+<p>Ask your question</p>
+<form action="<%= question_path %>", method="post">
+  <input type="hidden" name="conversation" value="<%= @convo.id %>">
+  <textarea rows="5" cols="33" name="entry"></textarea>
+  <input type="submit" class="btn btn-primary">
+</form>
+
+<br>
+
+<ul>
+  <% @convo.questions.each do |question| %>
+    <li>
+      Q: <%= question.content.capitalize %> <%= "?" if question.content.strip.last != "?" %>
+    </li>
+    <li>
+      A: <%= question.answers.first.content %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back", root_path %>
+
+```
 
 ## Implementation of DAL-E
 
