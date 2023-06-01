@@ -15,10 +15,10 @@ class ConversationsController < ApplicationController
     @question.save
     if conversation.historic.nil?
       response = OpenaiService.new(params[:entry]).call 
-      conversation.historic = "Q: #{@question.content}\nA: #{response}"
+      conversation.historic = "#{@question.content}\n#{response}"
     else
-      response = OpenaiService.new("#{conversation.historic}\nQ: #{params[:entry]}").call
-      conversation.historic += "\nQ: #{@question.content}\nA: #{response}"
+      response = OpenaiService.new("#{conversation.historic}\n#{params[:entry]}").call
+      conversation.historic += "\n#{@question.content}\n#{response}"
     end
     conversation.save
     @answer = Answer.create(content: response, question: @question)

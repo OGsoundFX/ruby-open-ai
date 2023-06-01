@@ -3,22 +3,23 @@
 <form action="<%= question_path %>", method="post">
   <input type="hidden" name="conversation" value="<%= @convo.id %>">
   <textarea rows="5" cols="33" name="entry"></textarea>
-  <input type="submit">
+  <input type="submit" class="btn btn-primary">
 </form>
 
-<%= @convo.historic if !@convo.historic.nil? %>
+<%# @convo.historic if !@convo.historic.nil? %>
 <br>
-<%= @answer %>
+<%# @answer %>
 
-<!--
+
 <ul>
   <% @convo.questions.each do |question| %>
     <li>
-      <%= question.content %>
+      Q: <%= question.content.capitalize %> <%= "?" if question.content.strip.last != "?" %>
     </li>
     <li>
-      <%= question.answers.first.content %>
+      A: <%= question.answers.first.content %>
     </li>
   <% end %>
 </ul>
--->
+
+<%= link_to "Back", root_path %>

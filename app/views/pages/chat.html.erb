@@ -1,14 +1,16 @@
-<h1>Let's talk</h1>
+<%= button_to "Create New Conversation", conversations_path, method: :post, class: "btn btn-primary my-3" %>
+
+<h1>Let's talk (quick conversation)</h1>
 <form action="<%= root_path %>">
   <textarea rows="5" cols="33" name="entry"></textarea>
-  <input type="submit">
+  <input type="submit" class="btn btn-primary">
 </form>
 <p><%= @response %></p>
 
 <h1>Let's generate some images</h1>
 <form action="<%= root_path %>">
   <input type="text" name="image_entry">
-  <input type="submit">
+  <input type="submit" class="btn btn-primary">
 </form>
 
 <%= @intro %>
@@ -17,5 +19,3 @@
     <img src="<%= url %>" alt="">
   <% end %>
 <% end %>
-
-<%= button_to "create new Conversation", conversations_path, method: :post %>
