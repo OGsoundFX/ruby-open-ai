@@ -98,12 +98,19 @@ By default the ```openai``` gem does not come with that feature, hence having to
 2. Routes
 ```ruby
 Rails.application.routes.draw do
+  root "pages#home" # supposes that you have a pages controller with a home action
   resources :conversations, only: [:create, :show]
   post "question", to: "conversations#ask_question"
 end
 ```
 
-3. Controller ```app/controllers/conversations_controller.rb```
+3. Home page view (with just a button that redirects to the create conversation action -- see bellow)
+```ruby
+<h1>Let's talk</h1>
+<%= button_to "Create New Conversation", conversations_path, method: :post, class: "btn btn-primary my-3" %>
+```
+
+4. Controller ```app/controllers/conversations_controller.rb```
 ```ruby
 class ConversationsController < ApplicationController
   def create
@@ -134,7 +141,7 @@ class ConversationsController < ApplicationController
 end
 ```
 
-4. Show page ```app/views/conversations/show.html.erb```
+5. Show page ```app/views/conversations/show.html.erb```
 
 ```ruby
 <h1>This is your conversation</h1>
@@ -161,6 +168,8 @@ end
 <%= link_to "Back", root_path %>
 
 ```
+6. ```rails s``` and test :)
+
 
 ## Implementation of DAL-E
 
