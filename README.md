@@ -87,6 +87,15 @@ end
 ```ruby
 response = OpenaiService.new('whatever you want to ask it').call
 ```
+
+## Implement a streaming conversation
+By default the ```openai``` gem does not come with that feature, hence having to implement it yourself
+
+1. Create your database with 3 tables (conversations, questions, answers) with thw following sctructure:
+
+<img src="./db-schema.png" width="380">
+
+
 ## Implementation of DAL-E
 
 1. Implement a new ```generate_image``` method in the ```openai_service.rb``` file
