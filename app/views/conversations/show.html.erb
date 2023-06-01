@@ -1,4 +1,5 @@
 <h1>This is your conversation</h1>
+<h4><%= @convo.initial_question.nil? ?  "" : @convo.initial_question.strip.capitalize %></h4>
 <p>Ask your question</p>
 <form action="<%= question_path %>", method="post">
   <input type="hidden" name="conversation" value="<%= @convo.id %>">
