@@ -71,7 +71,7 @@ class OpenaiService
   def call
     response = client.chat(
       parameters: {
-          model: "gpt-3.5-turbo", # Required.
+          model: "gpt-4", # Required.
           messages: [{ role: "user", content: prompt }], # Required.
           temperature: 0.7,
           stream: false,
