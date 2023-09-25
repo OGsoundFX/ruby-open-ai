@@ -1,7 +1,9 @@
 # IMPLEMENTATION OF ```ruby-openai``` GEM AND USAGE
 
 ## Basic implementation
-Thanks to [Doug](https://github.com/dmbf29) Berkley for this [Notion Page](https://doug-berkley.notion.site/doug-berkley/Rails-ChatGPT-Service-Object-Setup-21748fc969514b978bf6345f897b6d3e)
+- Thanks to [Doug](https://github.com/dmbf29) Berkley for this [Notion Page](https://doug-berkley.notion.site/doug-berkley/Rails-ChatGPT-Service-Object-Setup-21748fc969514b978bf6345f897b6d3e)
+
+- [Official documentation](https://platform.openai.com/docs/models)
 
 ### Rails ChatGPT Service Object Setup
 
